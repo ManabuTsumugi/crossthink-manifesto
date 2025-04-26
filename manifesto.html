@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CROSSTHINK - Manifesto</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #0a0a0a 0%, #000000 100%);
+      overflow: hidden;
+      font-family: 'Courier New', Courier, monospace;
+      color: #e0e0e0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      font-family: 'Brush Script MT', cursive;
+    }
+
+    p {
+      font-size: 1.5rem;
+      line-height: 2;
+      max-width: 800px;
+      margin: 0 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 3s forwards;
+      animation-delay: 1s;
+    }
+
+    /* 微粒子アニメーション */
+    .stars {
+      width: 2px;
+      height: 2px;
+      background: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      box-shadow: 
+        0 0 1px white,
+        100px 200px 1px white,
+        -150px -120px 1px white,
+        200px -100px 1px white,
+        -200px 150px 1px white,
+        300px 300px 1px white,
+        -300px -200px 1px white;
+      animation: moveStars 300s linear infinite;
+    }
+
+    @keyframes moveStars {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-200px, 200px); }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    a {
+      color: #8ab4f8;
+      text-decoration: none;
+      margin-top: 2rem;
+      display: inline-block;
+      font-size: 1rem;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+
+  <h1>CROSSTHINK MANIFESTO</h1>
+  <p>
+    We rethink thinking.<br>
+    Across disciplines. Across time. Across selves.<br>
+    Crossthink is not an answer. It is a beginning.<br>
+    A quiet revolution. A constellation of thought.<br>
+    Welcome to the space between questions.
+  </p>
+
+  <a href="/" target="_self">⬅️ Return to Home</a>
+</body>
+</html>
