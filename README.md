@@ -1,6 +1,8 @@
 # Crossthink Manifesto
 
-**Official Public Draft (ver.2.2)**
+「A quiet voyage into the future of human-AI intellectual collaboration.
+
+**Official Public Draft **
 
 ---
 
