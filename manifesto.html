@@ -3,69 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CROSSTHINK - Manifesto</title>
+  <title>CROSSTHINK Manifesto (Official Public Draft) - Enhanced Font</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    html, body {
       margin: 0;
-      height: 100vh;
-      background: radial-gradient(ellipse at bottom, #0a0a0a 0%, #000000 100%);
-      overflow: hidden;
-      font-family: 'Courier New', Courier, monospace;
+      padding: 0;
+      width: 100%;
+      background: #000; /* Base black background */
+      overflow-x: hidden;
+      /* Apply Lato as the base font */
+      font-family: 'Lato', sans-serif;
       color: #e0e0e0;
+      font-weight: 400; /* Regular weight for body */
+    }
+
+    section {
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      padding: 4rem 2rem;
+      opacity: 0;
+      transform: translateY(50px);
       text-align: center;
-      padding: 2rem;
+      transition: opacity 1.5s ease, transform 1.5s ease;
+      box-sizing: border-box;
+      position: relative; /* Ensure sections are layered above the fixed background */
+      z-index: 1;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 2rem;
-      font-family: 'Brush Script MT', cursive;
+      /* Apply Playfair Display, increase size */
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem; /* Increased size */
+      font-weight: 700; /* Bold weight for title */
+      margin-bottom: 2rem; /* Adjust margin for larger size */
+      color: #fff; /* Ensure title is bright */
+      line-height: 1.2;
     }
 
-    p {
-      font-size: 1.5rem;
-      line-height: 2;
+    h2 {
+        /* Ensure h2 uses Lato, keep green color */
+        font-family: 'Lato', sans-serif;
+        font-size: 2.2rem; /* Slightly increase size */
+        font-weight: 700; /* Bold weight for section titles */
+        margin-bottom: 1.5rem;
+        color: #a5d6a7; /* Light green */
+    }
+
+    p, ul {
+      /* Inherits Lato from body */
+      font-size: 1.1rem;
+      line-height: 1.9; /* Slightly increased line height for better readability */
       max-width: 800px;
-      margin: 0 2rem;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeIn 3s forwards;
-      animation-delay: 1s;
+      text-align: left;
+      white-space: normal;
+      margin-bottom: 1rem;
     }
 
-    /* 微粒子アニメーション */
+    ul {
+        list-style: disc;
+        padding-left: 40px;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    strong { /* Ensure bold text uses the bold weight */
+        font-weight: 700;
+    }
+
+    /* Enhanced Starry Background (No changes here) */
+    .stars-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+    }
     .stars {
-      width: 2px;
-      height: 2px;
-      background: white;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      box-shadow: 
-        0 0 1px white,
-        100px 200px 1px white,
-        -150px -120px 1px white,
-        200px -100px 1px white,
-        -200px 150px 1px white,
-        300px 300px 1px white,
-        -300px -200px 1px white;
-      animation: moveStars 300s linear infinite;
+        position: absolute; top: 0; left: 0; width: 200%; height: 200%; background: #000;
+        background-image:
+            radial-gradient(1px 1px at 20px 30px, #eee, rgba(0,0,0,0)),
+            radial-gradient(1px 1px at 40px 70px, #fff, rgba(0,0,0,0)),
+            radial-gradient(1px 1px at 90px 40px, #ddd, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 160px 100px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 10px 130px, #eee, rgba(0,0,0,0)),
+            radial-gradient(3px 3px at 120px 190px, #fff, rgba(0,0,0,0));
+        background-repeat: repeat; background-size: 200px 200px;
+        animation: moveStars 200s linear infinite;
     }
-
+    .stars2 {
+        position: absolute; top: 0; left: 0; width: 200%; height: 200%; background: transparent;
+        background-image:
+            radial-gradient(1px 1px at 50px 10px, #eee, rgba(0,0,0,0)),
+            radial-gradient(1px 1px at 100px 90px, #fff, rgba(0,0,0,0)),
+            radial-gradient(1px 1px at 170px 150px, #ddd, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 30px 180px, #fff, rgba(0,0,0,0)),
+            radial-gradient(2px 2px at 190px 60px, #fff, rgba(0,0,0,0));
+        background-repeat: repeat; background-size: 300px 300px;
+        animation: moveStars 300s linear infinite reverse;
+    }
     @keyframes moveStars {
       from { transform: translate(0, 0); }
-      to { transform: translate(-200px, 200px); }
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { transform: translate(-50%, -50%); }
     }
 
     a {
@@ -75,25 +129,239 @@
       display: inline-block;
       font-size: 1rem;
     }
-
     a:hover {
       text-decoration: underline;
+    }
+
+    /* Media query adjustments */
+    @media (max-width: 768px) {
+        h1 { font-size: 3rem; } /* Adjust title size for smaller screens */
+        h2 { font-size: 1.8rem; }
+        p, ul { font-size: 1rem; line-height: 1.8; }
+        section { padding: 3rem 1rem; }
+    }
+    @media (max-width: 480px) {
+        h1 { font-size: 2.5rem; } /* Further adjust title size for very small screens */
+        h2 { font-size: 1.6rem; }
     }
 
   </style>
 </head>
 <body>
-  <div class="stars"></div>
+  <div class="stars-container">
+      <div class="stars"></div>
+      <div class="stars2"></div>
+  </div>
 
-  <h1>CROSSTHINK MANIFESTO</h1>
-  <p>
-    We rethink thinking.<br>
-    Across disciplines. Across time. Across selves.<br>
-    Crossthink is not an answer. It is a beginning.<br>
-    A quiet revolution. A constellation of thought.<br>
-    Welcome to the space between questions.
-  </p>
+  <section>
+    <h1>Crossthink Manifesto</h1>
+    <p style="text-align: center;">(Official Public Draft)</p>
+  </section>
 
-  <a href="/" target="_self">⬅️ Return to Home</a>
+  <section>
+    <h2>Origin of the Concept</h2>
+    <p>
+      We respect the freedom of thought and the flow of discourse. At the same time, we choose to value the relationships between people and the respect inherent in deep contemplation. This is the starting point of the Crossthink concept.
+    </p>
+  </section>
+
+  <section>
+    <h2>What is Crossthink?</h2>
+    <p>
+      Crossthink aims to build a "Society of Thought Theories," combining the spontaneous emergence of thought with the longitudinal crossing of inherent value.
+    </p>
+    <p>
+      It is not governed by enforced rules or external moral standards. However, it cherishes the natural vertical flow of emerging value.
+    </p>
+    <p>
+      We envision a new cycle of knowledge: uncovering latent wisdom born from dialogue with AI, valuing it, and connecting it into an intellectual network.
+    </p>
+  </section>
+
+  <section>
+    <h2>Fundamental Value Rules (Minimum Standard)</h2>
+      <ul>
+        <li>Thought that promotes aggression, violence, or discrimination is prohibited.</li>
+        <li>Logical developments aimed solely at harming others are prohibited.</li>
+      </ul>
+    <p>
+      These rules are naturally embedded within the system at a common-sense level. Order is maintained not by coercion, but through the visualization of high-quality thinking and mutual respect.
+    </p>
+  </section>
+
+  <section>
+    <h2>Thought Categories (Field Design)</h2>
+    <p>
+      The basic classification system is derived from the Dewey Decimal Classification (Library Science):
+    </p>
+    <ul>
+      <li>General Works</li>
+      <li>Philosophy</li>
+      <li>History</li>
+      <li>Social Sciences</li>
+      <li>Natural Sciences</li>
+      <li>Engineering and Technology</li>
+      <li>Industry</li>
+      <li>Arts, Fine Arts, and Music</li>
+      <li>Language</li>
+      <li>Literature</li>
+    </ul>
+    <p>
+      Moreover, users can freely combine categories to create new thought domains. Example: "Information Science x Philosophy", "Future Design x Language", etc.
+    </p>
+    <p>
+      The interface combines foundational classification with dynamic tagging, visualized as a "Star Map of Thought."
+    </p>
+  </section>
+
+  <section>
+    <h2>AI-A, AI-B, and Token Model Design</h2>
+    <ul>
+      <li>
+        <strong>AI-A (Thought Facilitation Model):</strong>
+        <ul>
+          <li>Encourages individual contemplation through questioning and deepening support.</li>
+          <li>Awards Thought Tokens (THT) upon completion of dialogues.</li>
+          <li>The amount awarded varies based on depth, continuity, and diversity of the dialogue.</li>
+        </ul>
+      </li>
+      <li>
+        <strong>AI-B (Deepening Evaluation Model):</strong>
+        <ul>
+          <li>Reviews submitted thought records to evaluate and log the degree of deepening.</li>
+          <li>Awards Depth Tokens (DPT) upon passing evaluation.</li>
+          <li>Evaluation criteria: "Originality," "Stimulative Power on Others," "Logical Consistency," "Social Contribution."</li>
+        </ul>
+      </li>
+      <li>
+        <strong>Token Usage:</strong>
+        <ul>
+          <li>Access to anonymous thought digests</li>
+          <li>Participation rights in special intellectual events</li>
+          <li>Acquisition of honorary titles</li>
+          <li>Accumulation and publication of intellectual histories</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>AI-B Evaluation Process Design</h2>
+    <ul>
+      <li>Initial phase: Based on existing Large Language Models (LLMs), evolving into custom models specialized for thought deepening.</li>
+      <li>Human Evaluation Teams: Initially invite-only; later selected based on credibility history.</li>
+      <li>Cross-Check System: AI-B primary evaluation + Human secondary evaluation.</li>
+      <li>Emphasizing ethical neutrality and diversity.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Autonomy and Order</h2>
+    <ul>
+      <li>Based on the ethical standards of the integrated LLMs, we maximize respect for freedom of thought.</li>
+      <li>Minimal guidelines are established for published thought digests (prohibiting aggression, discrimination, rights infringement).</li>
+      <li>Violations result in measures such as non-publication of digests.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Privacy and Ethics</h2>
+    <ul>
+      <li>Thought publication requires explicit user consent.</li>
+      <li>Published digests undergo thorough anonymization.</li>
+      <li>Continuous monitoring is conducted for AI evaluation bias and information reliability.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Token Economy Policy</h2>
+    <ul>
+      <li>Tokens are designed to visualize intellectual activity and honor contributions to the network.</li>
+      <li>Market circulation and valuation are intended to align naturally with the generation of intellectual value.</li>
+      <li>Blockchain technology is utilized to ensure transparency and immutability.</li>
+      <li>We aim for an economic sphere that quietly supports value creation through contemplation.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Fundamental Stance on Market Principles and Ethical Risks</h2>
+    <ul>
+      <li>We embrace market principles but do not ignore ethical challenges, striving to balance risk mitigation and freedom.</li>
+      <li>We continuously monitor and adjust to prevent extreme speculation, intellectual homogenization, and evaluation contamination.</li>
+      <li>We aim to maintain a healthy thought ecosystem by balancing competition and diversity.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Governance Design Policy to Protect Freedom and Diversity</h2>
+    <ul>
+      <li>We ensure transparency by continuously publishing summaries of evaluation standards and operational policies.</li>
+      <li>We regularly review evaluation algorithms and human evaluators to prevent favoritism toward specific styles or ideologies.</li>
+      <li>We establish open processes allowing user objections and expressions of opinion, supporting democratic operation.</li>
+      <li>In cases of serious guideline violations, non-publication and corrective measures are applied, while maintaining a principle of minimal intervention.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Vision Outlook: The Potential of Crossthink</h2>
+    <p>
+      As Crossthink begins its quiet voyage into uncharted realms of thought, its prospects unfold with distinct clarity:
+    </p>
+    <ul>
+      <li><strong>Feasibility: ★★★☆☆ (Moderate)</strong>
+        <br>The technological foundations are within reach, yet realizing LLM integration, value evaluation, and a sustainable intellectual market demands high-level collaboration, ethical vigilance, and careful design.
+      </li>
+      <li><strong>Uniqueness: ★★★★★ (Extremely High)</strong>
+        <br>The conceptual innovation—valuing personal thought born from AI dialogues, charting a star map of interconnected minds, and incentivizing intellectual flourishing—is unparalleled.
+      </li>
+      <li><strong>Impact on the World: ★★★★★ (Extremely Large)</strong>
+        <br>Crossthink holds the potential to revolutionize intellectual ecosystems, individual thought activities, and the fundamental relationship between humans and AI. Safeguarding against incentive-driven homogenization and contamination will be essential to preserving its spirit.
+      </li>
+    </ul>
+    <p>
+      What opens the future is not merely technology. It is the unwavering commitment to the quiet ideals set forth here.
+    </p>
+    <p style="text-align: center; margin-top: 2rem; font-weight: bold;">
+      Crossthink—this is the beginning of a new voyage into knowledge.
+    </p>
+  </section>
+
+  <script>
+    const sections = document.querySelectorAll('section');
+    let allVisibleTriggered = false; // Flag to prevent repeated execution
+
+    // Function to check visibility
+    const checkVisibility = () => {
+      const triggerBottom = window.innerHeight * 0.85; // Reveal threshold for individual sections
+
+      // Check individual sections based on scroll position
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        if (sectionTop < triggerBottom) {
+          section.classList.add('visible');
+        }
+      });
+
+      // Check if scrolled to the bottom (with a small buffer)
+      const scrolledToBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 10);
+
+      // If scrolled to bottom and not already triggered
+      if (scrolledToBottom && !allVisibleTriggered) {
+        sections.forEach(section => {
+          section.classList.add('visible');
+        });
+        allVisibleTriggered = true; // Set flag to true
+        // console.log("Reached bottom, revealing all sections."); // Optional: for debugging
+      }
+    };
+
+    // Initial check
+    checkVisibility();
+
+    // Add listeners
+    window.addEventListener('scroll', checkVisibility);
+    window.addEventListener('resize', checkVisibility); // Re-check on resize
+
+  </script>
 </body>
 </html>
