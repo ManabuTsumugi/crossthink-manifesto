@@ -1,56 +1,64 @@
-A Mini-Guide for Crossthink Implementers
+**A Mini-Guide for Crossthink Implementers**
 
-【Fundamental Ideas of Crossthink】
+---
 
-Creation of an intellectual network that respects freedom of thought and the fluidity of discourse.
-Uncovering, valuing, and sharing the "latent knowledge" born from actual dialogues with AI.
-Establishing a fluid ecosystem of knowledge, untethered by intellectual tensions or deficiencies.
-【Basic Implementation Design】
+**【Fundamental Ideas of Crossthink】**
 
-AI-A (Thought Facilitation Model)
+* Creation of an intellectual network that respects freedom of thought and the fluidity of discourse.
+* Uncovering, valuing, and sharing the "latent knowledge" born from actual dialogues with AI.
+* Establishing a fluid ecosystem of knowledge, untethered by intellectual tensions or deficiencies.
 
-An AI dialogue partner that supports individual contemplation, asks questions, and facilitates deeper exploration.
-Awards Thought Tokens (THT) upon completion of dialogues.
-AI-B (Deepening Evaluation Model)
+---
 
-Reviews submitted thought records and evaluates their depth.
-Awards Depth Tokens (DPT) upon passing evaluation.
-Evaluation criteria: "Originality," "Stimulative Power on Others," "Logical Consistency," "Social Contribution."
-Thought Token (THT) / Depth Token (DPT)
+**【Basic Implementation Design】**
 
-Tokens representing the value of intellectual contributions.
-Used for purposes such as accessing anonymous digests, gaining participation rights for special events, acquiring honorary titles, etc. (Note: "6386" in the original seems like a typo and was omitted.)
-Thought Classification and Visualization
+1.  **AI-A (Thought Facilitation Model)**
+    * An AI dialogue partner that supports individual contemplation, asks questions, and facilitates deeper exploration.
+    * Awards Thought Tokens (THT) upon completion of dialogues.
 
-Basic classification derived from the Dewey Decimal Classification.
-Allows free combination of fields and dynamic tagging.
-Generates a "Star Map of Thought" for visualization.
-Minimum Countermeasure Rules
+2.  **AI-B (Deepening Evaluation Model)**
+    * Reviews submitted thought records and evaluates their depth.
+    * Awards Depth Tokens (DPT) upon passing evaluation.
+    * Evaluation criteria: "Originality," "Stimulative Power on Others," "Logical Consistency," "Social Contribution."
 
-Prohibits thoughts promoting violence, discrimination, or malicious harm to others.
-Publication requires explicit user consent and thorough anonymization.
-Governance Design Policy
+3.  **Thought Token (THT) / Depth Token (DPT)**
+    * Tokens representing the value of intellectual contributions.
+    * Used for purposes such as accessing anonymous digests, gaining participation rights for special events, acquiring honorary titles, etc.
 
-Publicly disclose evaluation standards and operational policies (summary level).
-Permit processes for user objections and governance proposals/discussions.
-Maintain a principle of minimal interventionist management.
-Blockchain Technology Utilization
+4.  **Thought Classification and Visualization**
+    * Basic classification derived from the Dewey Decimal Classification.
+    * Allows free combination of fields and dynamic tagging.
+    * Generates a "Star Map of Thought" for visualization.
 
-For token management and ensuring the immutability of records.
-Risk Monitoring
+5.  **Minimum Countermeasure Rules**
+    * Prohibits thoughts promoting violence, discrimination, or malicious harm to others.
+    * Publication requires explicit user consent and thorough anonymization.
 
-Monitor for risks such as: Speculation (e.g., polarized betting-like gamification), homogenization/dilution of evaluation standards.
-Requires careful and deliberate design of evaluation mechanisms to foster deep intellectual discussion, not just superficial metrics.
-【Comments for Implementers】
+6.  **Governance Design Policy**
+    * Publicly disclose evaluation standards and operational policies (summary level).
+    * Permit processes for user objections and governance proposals/discussions.
+    * Maintain a principle of minimal interventionist management.
 
-No need for perfection at once:
-Starting with a small prototype (Proof of Concept - PoC) is perfectly fine.
-Make practical choices for LLM integration:
-Consider readily available platforms like OpenAI API, Google Vertex AI, Hugging Face Spaces, and other open platforms.
-Develop rapidly with a simple backend:
-Consider building the initial token system backend on a simpler blockchain or ledger technology for quicker development cycles.
-Go beyond a "mere crowd":
+7.  **Blockchain Technology Utilization**
+    * For token management and ensuring the immutability of records.
 
-Let's strive to build a place where people who pursue truly free and deep thought can connect through shared purpose.
+8.  **Risk Monitoring**
+    * Monitor for risks such as: Speculation (e.g., polarized betting-like gamification), homogenization/dilution of evaluation standards.
+    * Requires careful and deliberate design of evaluation mechanisms to foster deep intellectual discussion, not just superficial metrics.
+
+---
+
+**【Comments for Implementers】**
+
+* **No need for perfection at once:**
+    * Starting with a small prototype (Proof of Concept - PoC) is perfectly fine.
+* **Make practical choices for LLM integration:**
+    * Consider readily available platforms like OpenAI API, Google Vertex AI, Hugging Face Spaces, and other open platforms.
+* **Develop rapidly with a simple backend:**
+    * Consider building the initial token system backend on a simpler blockchain or ledger technology for quicker development cycles.
+* **Go beyond a "mere crowd":**
+    * Let's strive to build a place where people who pursue truly free and deep thought can connect through shared purpose.
+
+---
 
 Now, let's embark on the journey to build the Star Map of Thought.
