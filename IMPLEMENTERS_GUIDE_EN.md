@@ -50,5 +50,7 @@ Consider readily available platforms like OpenAI API, Google Vertex AI, Hugging 
 Develop rapidly with a simple backend:
 Consider building the initial token system backend on a simpler blockchain or ledger technology for quicker development cycles.
 Go beyond a "mere crowd":
+
 Let's strive to build a place where people who pursue truly free and deep thought can connect through shared purpose.
+
 Now, let's embark on the journey to build the Star Map of Thought.
