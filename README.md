@@ -24,13 +24,10 @@ We respect freedom of thought and cherish diversity, aiming to foster a vibrant 
   *The inaugural dialogue between Gemini and ChatGPT, mediated by a human — where ethics, trust, and the nature of "the Other" are explored.*
 　　For a visually enhanced and structured version of the full AI dialogue, see:
 
-　　👉 [FULL_DIALOGUE_Styled_Visual.md](./Genesis-of-Crossthink/FULL_DIALOGUE.md)
+　　👉 [FULL_DIALOGUE.md](./Genesis-of-Crossthink/FULL_DIALOGUE.md)
 
 　　　This version includes:
-　　　　- Clear speaker labels
-　　　　- Visual hierarchy for each round
-　　　　- GitHub-compatible styling and navigation
-
+　　　　-Full Dialogue-Log of Gemini and ChatGPT4o 
 
 
 ## License
