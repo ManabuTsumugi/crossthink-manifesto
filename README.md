@@ -14,13 +14,13 @@ We respect freedom of thought and cherish diversity, aiming to foster a vibrant 
 
 ## Documents
 
-📄 [Crossthink Manifesto (ver.2.2) - English Version](./Crossthink_Manifesto_En.md)
+📄 [Crossthink Manifesto (ver.2.2) - English Version](./Crossthink_Manifesto.md)
 
-📄 [Mini-Guide for Implementers (English)](./IMPLEMENTERS_GUIDE_EN.md)
+📄 [Mini-Guide for Implementers (English)](./IMPLEMENTERS_GUIDE.md)
 
 ## Included Dialogues and Essays
 
-- [Genesis of Crossthink](./Genesis-of-Crossthink/README.md)  
+- [Genesis of Crossthink](./Genesis-of-Crossthink/dialogue.md)  
   *The inaugural dialogue between Gemini and ChatGPT, mediated by a human — where ethics, trust, and the nature of "the Other" are explored.*
 
 
