@@ -9,7 +9,7 @@
       margin: 0;
       height: 100vh;
       background: radial-gradient(ellipse at bottom, #0a0a0a 0%, #000000 100%);
-      overflow: hidden;
+      overflow: hidden; /* 画面外にはみ出た要素を隠す */
       font-family: 'Georgia', serif;
       color: #e0e0e0;
       display: flex;
@@ -17,11 +17,13 @@
       align-items: center;
       flex-direction: column;
       text-align: center;
+      position: relative; /* 星のコンテナを配置するため */
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 1rem;
+      z-index: 1; /* 星より手前に表示 */
     }
 
     p {
@@ -29,30 +31,7 @@
       line-height: 1.8;
       max-width: 700px;
       margin: 0 2rem;
-    }
-
-    /* 微粒子アニメーション */
-    .stars {
-      width: 2px;
-      height: 2px;
-      background: white;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      box-shadow: 
-        0 0 1px white,
-        100px 200px 1px white,
-        -150px -120px 1px white,
-        200px -100px 1px white,
-        -200px 150px 1px white,
-        300px 300px 1px white,
-        -300px -200px 1px white;
-      animation: moveStars 300s linear infinite;
-    }
-
-    @keyframes moveStars {
-      from { transform: translate(0, 0); }
-      to { transform: translate(-200px, 200px); }
+      z-index: 1; /* 星より手前に表示 */
     }
 
     a {
@@ -61,21 +40,94 @@
       margin-top: 1.5rem;
       display: inline-block;
       font-size: 1rem;
+      z-index: 1; /* 星より手前に表示 */
     }
 
     a:hover {
       text-decoration: underline;
     }
 
+    /* 流星群（宇宙船）アニメーション */
+    .stars-container { /* 星全体を包むコンテナ */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* 背後の文字などが選択できるように */
+    }
+
+    .stars {
+      width: 2px; /* 星（点）の基本サイズ */
+      height: 2px;
+      /* background: white; */ /* box-shadowで描画するため、本体は透明でも良い */
+      border-radius: 50%;
+      position: absolute; /* コンテナの中央を基準にする */
+      top: 50%;
+      left: 50%;
+      /* transform-origin: 0 0; はbox-shadowのオフセットの基準なので注意 */
+      opacity: 0; /* アニメーション開始時に表示 */
+
+      /* === ここにたくさんの星をbox-shadowで定義します === */
+      /* offsetX offsetY blur spread color */
+      /* もっとたくさん、様々な位置に追加することで密度と広がりが出ます */
+      box-shadow:
+        /* 近距離 (例) */
+        5px 10px 0 0px white, -8px 12px 0 0px white, 15px -5px 0 0px white, -10px -15px 0 0px white,
+        20px 5px 0 0px white, 8px -22px 0 0px white, -25px 18px 0 0px white, -18px -25px 0 0px white,
+        /* 中距離 (例) - 少しだけ大きく見えるようにspreadを1pxに */
+        40px 30px 0 1px white, -35px 50px 0 1px white, 60px -20px 0 1px white, -55px -40px 0 1px white,
+        70px 60px 0 1px white, -80px 75px 0 1px white, 90px -65px 0 1px white, -70px -85px 0 1px white,
+        100px 20px 0 1px white, 25px 110px 0 1px white, -120px 40px 0 1px white, -50px -130px 0 1px white,
+        /* 遠距離 (例) - さらに数を増やすと「たくさん」感が出ます */
+        150px 140px 0 1px white, -160px 170px 0 1px white, 180px -130px 0 1px white, -175px -160px 0 1px white,
+        200px 50px 0 1px white, 50px 220px 0 1px white, -230px 80px 0 1px white, -90px -240px 0 1px white,
+        250px -100px 0 1px white, -110px 260px 0 1px white, 270px 180px 0 1px white, -200px -210px 0 1px white,
+        300px 200px 0 1px white, -250px 280px 0 1px white, 290px -240px 0 1px white, -280px -290px 0 1px white,
+        /* === さらに多くの星を追加してください。座標値をランダムに、数を増やすほど密度が上がります === */
+        /* 例: 350px圏内まで様々な方向に、合計100個以上の点を打つイメージ */
+        10px 300px 0 1px white, 320px 10px 0 1px white, -300px -50px 0 1px white, -60px -310px 0 1px white
+      ;
+    }
+
+    /* 放射状に広がるアニメーション */
+    @keyframes moveStars {
+      0% {
+        transform: translate(-50%, -50%) scale(0.05) rotate(0deg); /* 中心で非常に小さく */
+        opacity: 1; /* アニメーション開始時に表示 */
+      }
+      100% {
+        /* scaleを大きくして画面外に広がるようにし、少し回転を加えることで動きに変化を */
+        transform: translate(-50%, -50%) scale(2) rotate(30deg); /* scale値を大きくするとより遠くまで飛ぶように見える */
+        opacity: 0; /* 完全に消える */
+      }
+    }
+
+    /* 異なるタイミングでアニメーションを開始させるためのクラス */
+    /* アニメーションの継続時間（例: 2s）を短くするとスピードが速くなります */
+    /* delay（例: 0.5s）を調整して、放出の頻度を変えます */
+    .stars-layer1 { animation: moveStars 2s linear 0s infinite; }
+    .stars-layer2 { animation: moveStars 2s linear 0.4s infinite; }
+    .stars-layer3 { animation: moveStars 2s linear 0.8s infinite; }
+    .stars-layer4 { animation: moveStars 2s linear 1.2s infinite; }
+    .stars-layer5 { animation: moveStars 2s linear 1.6s infinite; }
+    /* より多くのレイヤーを追加すると、さらに連続的で كثيف (kasif - كثيف) な流星群に見えます */
+
   </style>
 </head>
 <body>
-  <div class="stars"></div>
+  <div class="stars-container">
+    <div class="stars stars-layer1"></div>
+    <div class="stars stars-layer2"></div>
+    <div class="stars stars-layer3"></div>
+    <div class="stars stars-layer4"></div>
+    <div class="stars stars-layer5"></div>
+    </div>
 
   <h1>CROSSTHINK</h1>
   <p>A quiet beginning.<br>
-     A constellation of thought.<br>
-     Crossthink is an initiative to rethink how we think, across disciplines, times, and selves.
+      A constellation of thought.<br>
+      Crossthink is an initiative to rethink how we think, across disciplines, times, and selves.
   </p>
 
   <a href="https://x.com/crossthinkpj" target="_blank">Follow us on X</a>
