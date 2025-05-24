@@ -111,7 +111,7 @@
         <div class="further-reading">
             <h2>Further Reading</h2>
             <p>For the full geopolitical-philosophical essay (including chapters on U.S., EU, China, India, and more), visit:<br>
-            👉 <a href="https://github.com/ManabuTsumugi/2025-harvard-blockade-analysis-summary.md" target="_blank" rel="noopener noreferrer">GitHub Repository: https://github.com/ManabuTsumugi/crossthink-manifesto</a></p>
+            👉 <a href="2025-harvard-blockade-analysis-summary.md" target="_blank" rel="noopener noreferrer">GitHub Repository: https://github.com/ManabuTsumugi/crossthink-manifesto</a></p>
         </div>
     </article>
 
@@ -124,30 +124,29 @@
             const star = document.createElement('div');
             star.classList.add('star');
 
-            // 開始位置と終了位置をランダムに決定
             let startX, startY, endX, endY;
-            const edge = Math.floor(Math.random() * 4); // 0:上, 1:右, 2:下, 3:左
+            const edge = Math.floor(Math.random() * 4);
 
             switch (edge) {
-                case 0: // 上辺から出現
+                case 0: 
                     startX = Math.random() * screenWidth;
-                    startY = -10; // 少し画面外から
-                    endX = startX + (Math.random() - 0.5) * screenWidth * 1.5; // X方向にもある程度ランダムに移動
+                    startY = -10; 
+                    endX = startX + (Math.random() - 0.5) * screenWidth * 1.5; 
                     endY = screenHeight + 10;
                     break;
-                case 1: // 右辺から出現
+                case 1: 
                     startX = screenWidth + 10;
                     startY = Math.random() * screenHeight;
                     endX = -10;
-                    endY = startY + (Math.random() - 0.5) * screenHeight * 1.5; // Y方向にもある程度ランダムに移動
+                    endY = startY + (Math.random() - 0.5) * screenHeight * 1.5; 
                     break;
-                case 2: // 下辺から出現
+                case 2: 
                     startX = Math.random() * screenWidth;
                     startY = screenHeight + 10;
                     endX = startX + (Math.random() - 0.5) * screenWidth * 1.5;
                     endY = -10;
                     break;
-                case 3: // 左辺から出現
+                case 3: 
                     startX = -10;
                     startY = Math.random() * screenHeight;
                     endX = screenWidth + 10;
@@ -155,8 +154,7 @@
                     break;
             }
             
-            // 稀に画面中央付近から四方八方に広がる星も追加
-            if (Math.random() < 0.05) { // 5%の確率
+            if (Math.random() < 0.05) { 
                 startX = screenWidth / 2 + (Math.random() - 0.5) * 100;
                 startY = screenHeight / 2 + (Math.random() - 0.5) * 100;
                 const angle = Math.random() * Math.PI * 2;
@@ -165,34 +163,33 @@
                 endY = startY + Math.sin(angle) * distance;
             }
 
-
             star.style.left = startX + 'px';
             star.style.top = startY + 'px';
 
             starContainer.appendChild(star);
 
-            const duration = Math.random() * 2000 + 1000; // 1秒から3秒で移動
-            const delay = Math.random() * 500; // 少し遅れてアニメーション開始
+            const duration = Math.random() * 2000 + 1000; 
+            const delay = Math.random() * 500;
 
             star.animate([
-                { transform: 'scale(0.5)', opacity: 0 }, // 開始時 (小さい、透明)
-                { transform: 'scale(1)', opacity: 1, offset: 0.1 }, // すぐに表示 (通常サイズ、不透明)
-                { transform: `translate(${endX - startX}px, ${endY - startY}px) scale(0.3)`, opacity: 0 } // 終了時 (移動後、小さい、透明)
+                { transform: 'scale(0.5)', opacity: 0 }, 
+                { transform: 'scale(1)', opacity: 1, offset: 0.1 }, 
+                { transform: `translate(${endX - startX}px, ${endY - startY}px) scale(0.3)`, opacity: 0 } 
             ], {
                 duration: duration,
                 delay: delay,
-                easing: 'ease-out', // 最初は速く、最後は少しゆっくり
-                fill: 'forwards' // アニメーション終了後も最後の状態を維持
+                easing: 'ease-out', 
+                fill: 'forwards' 
             }).onfinish = () => {
-                star.remove(); // アニメーションが終わったら星を削除
+                star.remove(); 
             };
         }
 
-        // 定期的に星を生成
-        setInterval(createStar, 150); // 150ミリ秒ごと
+        // 定期的に星を生成する間隔を短くする (例: 150ms -> 75ms)
+        setInterval(createStar, 75); // ★変更点：星の生成頻度をアップ
 
-        // 初期表示用にいくつか星を生成
-        for(let i = 0; i < 30; i++) {
+        // 初期表示用に生成する星の数を増やす (例: 30 -> 60)
+        for(let i = 0; i < 60; i++) { // ★変更点：初期の星の数を増加
             createStar();
         }
     </script>
