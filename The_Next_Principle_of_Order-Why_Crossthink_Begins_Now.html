@@ -10,7 +10,7 @@
             color: #fff;            /* 基本の文字色を白に */
             margin: 0;
             padding: 0;
-            overflow: hidden;      /* 星が画面外にはみ出てもスクロールバーが出ないように */
+            /* overflow: hidden;  <- この行を削除またはコメントアウトしました */
             font-family: sans-serif;
             line-height: 1.6;
         }
@@ -23,6 +23,7 @@
             height: 100%;
             pointer-events: none; /* 星がクリック等の邪魔をしないように */
             z-index: 0; /* コンテンツより後ろ */
+            overflow: hidden; /* 星がこのコンテナからはみ出ても影響ないように念のため設定 */
         }
 
         .star {
@@ -39,15 +40,15 @@
             position: relative; /* z-index を有効にするため */
             z-index: 1;         /* 星より手前に表示 */
             max-width: 800px;
-            margin: 30px auto;  /* 上下のマージンを少し増やす */
+            margin: 30px auto;
             padding: 20px;
-            background-color: rgba(0, 0, 0, 0.3); /* 少しだけ背景を暗くして読みやすく */
+            background-color: rgba(0, 0, 0, 0.3);
             border-radius: 8px;
         }
 
         h1, h2 {
-            color: #eee; /* 見出しの色 */
-            border-bottom-color: #444; /* 区切り線の色調整 */
+            color: #eee;
+            border-bottom-color: #444;
         }
         h1 {
             font-size: 2em;
@@ -59,11 +60,11 @@
             margin-top: 1.5em;
         }
         p {
-            color: #ccc; /* 段落の文字色 */
+            color: #ccc;
             margin-bottom: 1em;
         }
         a {
-            color: #77b3ff; /* リンクの色 */
+            color: #77b3ff;
             text-decoration: none;
         }
         a:hover {
@@ -73,7 +74,7 @@
         .further-reading {
             margin-top: 2em;
             padding-top: 1em;
-            border-top: 1px solid #444; /* 区切り線の色調整 */
+            border-top: 1px solid #444;
         }
     </style>
 </head>
@@ -185,11 +186,9 @@
             };
         }
 
-        // 定期的に星を生成する間隔を短くする (例: 150ms -> 75ms)
-        setInterval(createStar, 75); // ★変更点：星の生成頻度をアップ
+        setInterval(createStar, 75); 
 
-        // 初期表示用に生成する星の数を増やす (例: 30 -> 60)
-        for(let i = 0; i < 60; i++) { // ★変更点：初期の星の数を増加
+        for(let i = 0; i < 60; i++) { 
             createStar();
         }
     </script>
