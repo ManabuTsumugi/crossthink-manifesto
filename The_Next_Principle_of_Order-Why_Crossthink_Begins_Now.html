@@ -1,24 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why Crossthink Begins Now: In an Era of Re-Division</title>
+    <title>Why Crossthink Begins Now: In an Era of Re-Division - Starfield</title>
     <style>
-        /* Basic styling for readability - the actual site's CSS will override this */
         body {
+            background-color: #000; /* 黒背景 */
+            color: #fff;            /* 基本の文字色を白に */
+            margin: 0;
+            padding: 0;
+            overflow: hidden;      /* 星が画面外にはみ出てもスクロールバーが出ないように */
             font-family: sans-serif;
             line-height: 1.6;
-            margin: 0 auto;
-            max-width: 800px;
-            padding: 20px;
         }
+
+        .star-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* 星がクリック等の邪魔をしないように */
+            z-index: 0; /* コンテンツより後ろ */
+        }
+
+        .star {
+            position: absolute; /* .star-container 内で絶対配置 */
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 0 5px white, 0 0 10px white; /* 少し光っているような効果 */
+            opacity: 0; /* 初期状態は透明 */
+        }
+
+        article {
+            position: relative; /* z-index を有効にするため */
+            z-index: 1;         /* 星より手前に表示 */
+            max-width: 800px;
+            margin: 30px auto;  /* 上下のマージンを少し増やす */
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.3); /* 少しだけ背景を暗くして読みやすく */
+            border-radius: 8px;
+        }
+
         h1, h2 {
-            color: #333;
+            color: #eee; /* 見出しの色 */
+            border-bottom-color: #444; /* 区切り線の色調整 */
         }
         h1 {
             font-size: 2em;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #444;
             padding-bottom: 0.3em;
         }
         h2 {
@@ -26,23 +59,28 @@
             margin-top: 1.5em;
         }
         p {
+            color: #ccc; /* 段落の文字色 */
             margin-bottom: 1em;
         }
         a {
-            color: #007bff;
+            color: #77b3ff; /* リンクの色 */
             text-decoration: none;
         }
         a:hover {
             text-decoration: underline;
+            color: #a1cfff;
         }
         .further-reading {
             margin-top: 2em;
             padding-top: 1em;
-            border-top: 1px solid #eee;
+            border-top: 1px solid #444; /* 区切り線の色調整 */
         }
     </style>
 </head>
 <body>
+
+    <div class="star-container">
+        </div>
 
     <article>
         <h1>Why Crossthink Begins Now: In an Era of Re-Division</h1>
@@ -76,6 +114,88 @@
             👉 <a href="https://github.com/ManabuTsumugi/crossthink-manifesto" target="_blank" rel="noopener noreferrer">GitHub Repository: https://github.com/ManabuTsumugi/crossthink-manifesto</a></p>
         </div>
     </article>
+
+    <script>
+        const starContainer = document.querySelector('.star-container');
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+
+            // 開始位置と終了位置をランダムに決定
+            let startX, startY, endX, endY;
+            const edge = Math.floor(Math.random() * 4); // 0:上, 1:右, 2:下, 3:左
+
+            switch (edge) {
+                case 0: // 上辺から出現
+                    startX = Math.random() * screenWidth;
+                    startY = -10; // 少し画面外から
+                    endX = startX + (Math.random() - 0.5) * screenWidth * 1.5; // X方向にもある程度ランダムに移動
+                    endY = screenHeight + 10;
+                    break;
+                case 1: // 右辺から出現
+                    startX = screenWidth + 10;
+                    startY = Math.random() * screenHeight;
+                    endX = -10;
+                    endY = startY + (Math.random() - 0.5) * screenHeight * 1.5; // Y方向にもある程度ランダムに移動
+                    break;
+                case 2: // 下辺から出現
+                    startX = Math.random() * screenWidth;
+                    startY = screenHeight + 10;
+                    endX = startX + (Math.random() - 0.5) * screenWidth * 1.5;
+                    endY = -10;
+                    break;
+                case 3: // 左辺から出現
+                    startX = -10;
+                    startY = Math.random() * screenHeight;
+                    endX = screenWidth + 10;
+                    endY = startY + (Math.random() - 0.5) * screenHeight * 1.5;
+                    break;
+            }
+            
+            // 稀に画面中央付近から四方八方に広がる星も追加
+            if (Math.random() < 0.05) { // 5%の確率
+                startX = screenWidth / 2 + (Math.random() - 0.5) * 100;
+                startY = screenHeight / 2 + (Math.random() - 0.5) * 100;
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * (screenWidth / 2);
+                endX = startX + Math.cos(angle) * distance;
+                endY = startY + Math.sin(angle) * distance;
+            }
+
+
+            star.style.left = startX + 'px';
+            star.style.top = startY + 'px';
+
+            starContainer.appendChild(star);
+
+            const duration = Math.random() * 2000 + 1000; // 1秒から3秒で移動
+            const delay = Math.random() * 500; // 少し遅れてアニメーション開始
+
+            star.animate([
+                { transform: 'scale(0.5)', opacity: 0 }, // 開始時 (小さい、透明)
+                { transform: 'scale(1)', opacity: 1, offset: 0.1 }, // すぐに表示 (通常サイズ、不透明)
+                { transform: `translate(${endX - startX}px, ${endY - startY}px) scale(0.3)`, opacity: 0 } // 終了時 (移動後、小さい、透明)
+            ], {
+                duration: duration,
+                delay: delay,
+                easing: 'ease-out', // 最初は速く、最後は少しゆっくり
+                fill: 'forwards' // アニメーション終了後も最後の状態を維持
+            }).onfinish = () => {
+                star.remove(); // アニメーションが終わったら星を削除
+            };
+        }
+
+        // 定期的に星を生成
+        setInterval(createStar, 150); // 150ミリ秒ごと
+
+        // 初期表示用にいくつか星を生成
+        for(let i = 0; i < 30; i++) {
+            createStar();
+        }
+    </script>
 
 </body>
 </html>
