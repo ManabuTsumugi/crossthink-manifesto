@@ -12,6 +12,29 @@ Crossthink is a new initiative to visualize and value latent knowledge born from
 
 We respect freedom of thought and cherish diversity, aiming to foster a vibrant new ecosystem of intellectual interaction.
 
+---
+
+## 🧭 Featured Essay: The Next Principle of Order
+
+### *Why Crossthink Begins Now*
+
+> A concise geopolitical and philosophical analysis tracing the decline of universal values, the emergence of narrative conflict, and Japan’s role in ethical leadership.
+> This essay introduces the intellectual and moral foundation from which the Crossthink project emerges.
+
+📖 **Read the full essay here:**
+👉 [2025-harvard-blockade-analysis-summary.md](https://github.com/ManabuTsumugi/crossthink-manifesto/blob/main/2025-harvard-blockade-analysis-summary.md "2025-harvard-blockade-analysis-summary.md")
+
+🧠 Key concepts:
+
+* Narrative Power and Civilizational Fracture
+* The Architecture of Empathy and “Wars Without Stories”
+* From Passive Pacifism to Ethical Gravitation
+* Crossthink as a New Cosmology of Thought
+
+✍️ Authored by: [Manabu Tsumugi](https://x.com/crossthinkpj)
+📄 License: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+
+
 ## Documents
 
 📄 [Crossthink Manifesto (ver.2.2) - English Version](./Crossthink_Manifesto.md)
